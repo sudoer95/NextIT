@@ -1,4 +1,6 @@
-A NextJS E-commerce tech shop.
+## A NextJS E-commerce tech shop.
+Project status: Front-end finished.
+Pending: Backend, DB management.
 
 ## Getting Started
 
@@ -21,4 +23,4 @@ yarn dev
 pnpm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) or [http://0.0.0.0:3000](http://0.0.0.0:3000) with your browser to see the result.
