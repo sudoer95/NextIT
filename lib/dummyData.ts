@@ -20,4 +20,5 @@ export const products = [
     { id:11, name:"iPhone 14 pro", description:"Flagship with best perfomance and camera.", price:1000, category_id: 2, image_url:"/images/dummy1x1.png"},
     { id:12, name:"Samsung Galaxy Tab S8", description:"Tablet with powerful SoC and good display.", price:500, category_id: 4, image_url:"/images/dummy1x1.png"},
     { id:13, name:"Samsung Galaxy Watch 5", description:"Smartwatch with good perfomance.", price:300, category_id: 5, image_url:"/images/dummy1x1.png"},
+    { id:14, name:"iPad Pro 12.9", description:"Tablet with powerful SoC and good display.", price:800, category_id: 4, image_url:"/images/dummy1x1.png"},
 ]
