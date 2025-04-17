@@ -1,7 +1,7 @@
-import ProductCart from "../components/ProductCard";
+import ProductCart from "./components/ProductCard";
 import { products } from "@/lib/dummyData";
 import { categories } from "@/lib/dummyData";
-import { Carousel } from "../components/Carousel";
+import { Carousel } from "./components/Carousel";
 import Link from "next/link";
 
 export default function Home() {
@@ -29,7 +29,7 @@ export default function Home() {
       </section>
       <br />
       <section>
-        <h2 className="text-xl font-semibold mb-4">You might like</h2>
+        <h2 className="text-xl text-center font-semibold mb-4">You might also like</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           {popularProducts.map(product => (
             <ProductCart key={product.id} product={product} />

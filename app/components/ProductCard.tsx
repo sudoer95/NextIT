@@ -31,9 +31,9 @@ export default function ProductCart({ product }: ProductCartProps) {
                     </div>
                     <div className="p-4 space-y-2">
                         <h3 className="text-lg font-semibold">{product.name}</h3>
-                        <p className="text-sm text-gray-500 line-clamp-2">{product.description}</p>
+                        <p className="text-sm text-gray-950 line-clamp-2">{product.description}</p>
                         <span className="text-m text-green-600">${product.price}</span>
-                        <span className="inline-block text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                        <span className="inline-block text-xs bg-gray-100 text-gray-900 px-2 py-1 rounded">
                             {categories.find(category => category.id === product.category_id)?.name || "Unknown Category"}
                         </span>
                     </div>

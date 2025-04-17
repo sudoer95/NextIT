@@ -3,6 +3,8 @@ import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import RouteTransition from "./components/RouteTransition";
+import { RouteProgress } from "./components/RouteProgress";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,10 +31,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar/>
-        {children}
+        <Navbar />
+        <RouteProgress />
+        <RouteTransition>
+          <div className="min-h-screen">{children}</div>
+        </RouteTransition>
+
         <br />
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
