@@ -3,12 +3,14 @@ import { products } from "@/lib/dummyData";
 import { categories } from "@/lib/dummyData";
 import { Carousel } from "../components/Carousel";
 import Link from "next/link";
+import { RouteTransition } from "@/components/RouteTransition";
 
 export default function Home() {
   const popularProducts = products.slice(0, 3);
   const popularCategories = categories.slice(0, 5);
   return (
     <main>
+      <RouteTransition>
       <br />
       <section>
         <h1 className="text-2xl font-bold mb-4 text-center font-mono">Welcome to the greatest <b className="font-extrabold">Tech</b> store!</h1>
@@ -36,6 +38,7 @@ export default function Home() {
           ))}
         </div>
       </section>
+      </RouteTransition>
     </main>
   );
 }

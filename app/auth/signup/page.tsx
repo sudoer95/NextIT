@@ -1,8 +1,11 @@
+import { RouteTransition } from "@/components/RouteTransition";
+
 export default function SingUpPage() {
     return (
         <main className="flex flex-col items-center justify-center p-4">
+            <RouteTransition>
             <br />
-            <h1 className="text-3xl font-bold mb-4">Sign Up</h1>
+            <h1 className="text-3xl font-bold mb-4 text-center font-mono">Sign Up</h1>
             <form className="flex flex-col gap-4 w-full max-w-sm">
                 <input
                     type="text"
@@ -23,6 +26,7 @@ export default function SingUpPage() {
                     Sign Up
                 </button>
             </form>
+            </RouteTransition>
         </main>
     );
 }

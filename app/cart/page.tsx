@@ -1,6 +1,9 @@
+import { RouteTransition } from "@/components/RouteTransition"
+
 export default function CartPage() {
     return (
       <main className="p-4 max-w-4xl mx-auto">
+        <RouteTransition>
         <br />
         <h1 className="text-2xl font-bold mb-6 font-mono text-center">Your Cart</h1>
   
@@ -17,6 +20,7 @@ export default function CartPage() {
           <p className="text-lg font-medium">Your cart is empty</p>
           <p className="text-sm mt-1">Start adding some tech gear to your bag!</p>
         </div>
+        </RouteTransition>
       </main>
     );
   }

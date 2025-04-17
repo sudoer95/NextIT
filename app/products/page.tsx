@@ -5,6 +5,7 @@ import { products } from "@/lib/dummyData";
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import ProductCart from "../../components/ProductCard";
+import { RouteTransition } from "@/components/RouteTransition";
 
 function usePreloadFilter(setCategoryFilter: (id: number | null) => void) {
     const searchParams = useSearchParams();
@@ -26,6 +27,7 @@ export default function Products() {
 
     return (
         <div>
+            <RouteTransition>
             <br />
             <h1 className="text-center font-bold font-mono text-2xl">Products</h1>
             <div className="text-center">
@@ -47,6 +49,7 @@ export default function Products() {
                 <ProductCart key={product.id} product={product}/>
             ))}
             </div>
+            </RouteTransition>
         </div>
     );
 }

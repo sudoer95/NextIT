@@ -2,6 +2,7 @@ import { products } from "@/lib/dummyData";
 import { categories } from "@/lib/dummyData";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { RouteTransition } from "@/components/RouteTransition";
 
 interface ProductPageProps {
   params: { id: string };
@@ -17,6 +18,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <main className="p-4 max-w-3xl mx-auto space-y-6">
+      <RouteTransition>
       <div className="relative w-full h-64 sm:h-80 rounded-xl overflow-hidden">
         <Image
           src={product.image_url}
@@ -37,6 +39,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <button className="mt-4 px-4 py-2 bg-black text-white rounded hover:bg-gray-800 transition">
         Add to Cart
       </button>
+      </RouteTransition>
     </main>
   );
 }
