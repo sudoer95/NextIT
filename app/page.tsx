@@ -1,7 +1,7 @@
-import ProductCart from "./components/ProductCard";
+import ProductCart from "../components/ProductCard";
 import { products } from "@/lib/dummyData";
 import { categories } from "@/lib/dummyData";
-import { Carousel } from "./components/Carousel";
+import { Carousel } from "../components/Carousel";
 import Link from "next/link";
 
 export default function Home() {

@@ -4,7 +4,7 @@ import { categories } from "@/lib/dummyData";
 import { products } from "@/lib/dummyData";
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import ProductCart from "../components/ProductCard";
+import ProductCart from "../../components/ProductCard";
 
 function usePreloadFilter(setCategoryFilter: (id: number | null) => void) {
     const searchParams = useSearchParams();

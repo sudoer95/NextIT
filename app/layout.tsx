@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { Navbar } from "./components/Navbar";
-import { Footer } from "./components/Footer";
+import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import RouteTransition from "./components/RouteTransition";
-import { RouteProgress } from "./components/RouteProgress";
+import RouteTransition from "@/components/RouteTransition";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,17 +25,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
-        <RouteProgress />
         <RouteTransition>
           <div className="min-h-screen">{children}</div>
         </RouteTransition>
-
+        
         <br />
         <Footer />
       </body>
