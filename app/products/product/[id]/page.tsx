@@ -8,8 +8,9 @@ interface ProductPageProps {
   params: { id: string };
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
-  const productId = parseInt(params.id, 10);
+export default async function ProductPage({ params }: { params: Promise<ProductPageProps["params"]> }) {
+  const { id } = await params;
+  const productId = parseInt(id, 10);
   const product = products.find(p => p.id === productId);
   const category = categories.find(c => c.id === product?.category_id);
   if (!product) {
