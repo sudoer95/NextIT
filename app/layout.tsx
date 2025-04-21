@@ -3,7 +3,6 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { RouteTransition } from "@/components/RouteTransition";
 
 
 
@@ -29,7 +28,7 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
-        <div className="min-h-screen">{children}</div>
+        <div className="container mx-auto min-h-screen">{children}</div>
         <br />
         <Footer />
       </body>

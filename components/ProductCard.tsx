@@ -11,15 +11,11 @@ interface Product {
     image_url: string;
 }
 
-interface Category {
-    id: number;
-    name: string;
-}
 interface ProductCartProps {
     product: Product;
 }
 
-export default function ProductCart({ product }: ProductCartProps) {
+export function ProductCart({ product }: ProductCartProps) {
     // Dummy categories data, replace with actual data fetching if needed
     // const categories = await fetchCategories(); // Fetch categories from your API or data source
     return (
