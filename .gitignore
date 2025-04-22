@@ -24,14 +24,21 @@
 .DS_Store
 *.pem
 
+#IDE's
+.idea
+.jetbrains
+.webstorm
+.vscode
+
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files (only example can be opted in.)
 .env*
+!.env.example
 
 # vercel
 .vercel
