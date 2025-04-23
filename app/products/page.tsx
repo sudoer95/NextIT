@@ -1,7 +1,7 @@
 'use client';
 import { useState } from "react";
-import { categories } from "@/lib/dummyData";
-import { products } from "@/lib/dummyData";
+import { categories } from "@/app/lib/dummyData";
+import { products } from "@/app/lib/dummyData";
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { ProductCart } from "../../components/ProductCard";
