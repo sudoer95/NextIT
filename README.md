@@ -28,7 +28,7 @@ For prisma please create a user with CREATEDB privilegie and database with owner
 In .env write all credentials for db, .env.example provided.
 Then run:
 ```bash
-npx prisma migrate dev #if schema.prisma changed
+npx prisma migrate dev # after installation and when schema.prisma changed
 npx prisma generate
 ```
 
