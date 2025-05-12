@@ -1,5 +1,5 @@
-import { products } from "@/app/lib/dummyData";
-import { categories } from "@/app/lib/dummyData";
+import { products } from "@/lib/dummyData";
+import { categories } from "@/lib/dummyData";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { RouteTransition } from "@/components/RouteTransition";

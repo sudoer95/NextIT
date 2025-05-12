@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { categories } from "@/app/lib/dummyData";
+import { categories } from "@/lib/dummyData";
 
 interface Product {
     id: number;

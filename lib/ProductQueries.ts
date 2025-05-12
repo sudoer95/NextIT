@@ -9,10 +9,10 @@ export async function FetchUsers(id: number){
     }
     catch (e){
         console.error(e);
-        await prisma.$disconnect;
+        await prisma.$disconnect();
         process.exit(0);
     }
     finally{
-        await prisma.$disconnect
+        await prisma.$disconnect();
     }
 }

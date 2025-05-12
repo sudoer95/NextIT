@@ -49,7 +49,6 @@ model Product {
   category     Category  @relation(fields: [category_id], references: [id])
   orderedItems OrderedItem[]
   cartItems    CartItem[]
-  specs        Spec[]
 }
 
 model Order {
@@ -91,15 +90,4 @@ model AdminSetting {
   id         Int      @id @default(autoincrement())
   key        String   @unique
   value      String
-}
-
-model Spec {
-  id          Int      @id @default(autoincrement())
-  product_id  Int
-  name        String
-  value       String
-
-  product     Product  @relation(fields: [product_id], references: [id])
-
-  @@index([product_id, name])
 }
