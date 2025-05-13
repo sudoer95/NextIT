@@ -73,26 +73,3 @@ export default function ManageProducts() {
         </div>
     );
 }
-
-// async function deleteProduct(id: string) {
-//     try {
-//         const response = await fetch('/api/your-endpoint', {
-//             method: 'DELETE',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//             },
-//             body: JSON.stringify({ id }),
-//         });
-
-//         if (!response.ok) {
-//             const errorData = await response.json();
-//             console.error('Error deleting product:', errorData);
-//             throw new Error(errorData.error || 'Failed to delete product');
-//         }
-
-//         const data = await response.json();
-//         console.log('Success:', data.message);
-//     } catch (error) {
-//         console.error('Error:', error);
-//     }
-// }
