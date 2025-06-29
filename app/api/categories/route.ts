@@ -23,7 +23,7 @@ export async function POST(request: Request) {
 export async function PUT(request: Request) {
     try {
         const { id, name } = await request.json();
-        await UpdateCategory(id, name);
+        await UpdateCategory(Number(id), name);
         return NextResponse.json({message: "Category updated succesfully"}, {status: 200});
     }
     catch (e) {

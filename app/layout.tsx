@@ -1,9 +1,21 @@
+// Basic imports
 import type { Metadata } from "next";
+// Components imports
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
+//Font imports
 import { Geist, Geist_Mono } from "next/font/google";
+//Style imports
 import "./globals.css";
-
+//Clerk imports
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
 
 
 const geistSans = Geist({

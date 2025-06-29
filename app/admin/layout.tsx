@@ -1,6 +1,7 @@
 import '../globals.css';
 import Link from 'next/link';
 
+
 export default function Layout({ children }: { children: React.ReactNode }) {
     return (
         <div className="flex flex-col min-h-screen bg-gray-100">
@@ -15,6 +16,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         </li>
                         <li>
                             <Link href="/admin/users" className="text-gray-700 hover:text-blue-500 font-medium">Users</Link>
+                        </li>
+                        <li>
+                            <Link href="/admin/categories" className="text-gray-700 hover:text-blue-500 font-medium">Categories</Link>
                         </li>
                     </ul>
                 </div>

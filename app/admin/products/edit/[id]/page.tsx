@@ -1,10 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import { redirect, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 
 export default function EditProduct() {
     const { id } = useParams();
-    console.log(id);
 
     const [categories, setCategories] = useState<{ id: number; name: string }[]>([]);
     const [product, setProduct] = useState<{ id: number; name: string; description: string; price: number; category_id: number; stock: number; image_url: string } | null>(null);
