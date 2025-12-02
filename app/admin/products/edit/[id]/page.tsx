@@ -1,10 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function EditProduct() {
     const { id } = useParams();
-
+    const router = useRouter();
     const [categories, setCategories] = useState<{ id: number; name: string }[]>([]);
     const [product, setProduct] = useState<{ id: number; name: string; description: string; price: number; category_id: number; stock: number; image_url: string } | null>(null);
 
@@ -56,6 +57,7 @@ export default function EditProduct() {
                 .then((res) => {
                     if (res.ok) {
                         alert('Product updated successfully');
+                        router.push('/admin/products/')
                     } else {
                         alert('Failed to update product');
                     }

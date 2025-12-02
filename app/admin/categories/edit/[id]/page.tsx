@@ -1,10 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function EditCategory() {
     const { id } = useParams();
     const [name, setName] = useState("");
+    const router = useRouter();
 
     useEffect(() => {
         fetch(`/api/categories?id=${id}`)
@@ -14,6 +16,7 @@ export default function EditCategory() {
                     setName(data.name);
                 } else {
                     alert("Category not found");
+                    router.push('/admin/categories/')
                 }
             });
     }, [id]);
@@ -30,6 +33,7 @@ export default function EditCategory() {
         .then((res) => {
             if (res.ok) {
                 alert('Category updated successfully');
+                router.push('/admin/categories/');
             } else {
                 alert('Failed to update category');
             }
@@ -39,10 +43,10 @@ export default function EditCategory() {
             alert('An error occurred while updating the category');
         });
     };
-
+    
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-            <h1 className="text-4xl font-bold mb-4">Edit Category</h1>
+            <h1 className="text-4xl font-bold mb-4">Edit Category {name}</h1>
             <form className="flex flex-col space-y-4" onSubmit={handleSubmit}>
                 <input
                     defaultValue={name}

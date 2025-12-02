@@ -40,7 +40,7 @@ export default function ManageProducts() {
                                 <td className="border border-gray-300 px-4 py-2">{product.created_at}</td>
                                 <td className="border border-gray-300 px-4 py-2"><Link href={`products/edit/${product.id}`}>Edit</Link></td>
                                 <td className="border border-gray-300 px-4 py-2"><button
-                                    className="bg-red-500 text-white rounded"
+                                    className="bg-red-500 text-white rounded-xs pl-0.5 pr-0.5"
                                     onClick={() => {
                                         fetch(`/api/products/`, {
                                             method: "DELETE",

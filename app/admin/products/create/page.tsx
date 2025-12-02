@@ -1,7 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function AddProduct(){
+    const router = useRouter();
     const [categories, setCategories] = useState<{ id: number; name: string }[]>([]);
     useEffect(() => {
         fetch("/api/categories")
@@ -32,6 +34,7 @@ export default function AddProduct(){
                 .then((res) => {
                     if (res.ok) {
                         alert('Product added successfully');
+                        router.push('/admin/products/')
                     } else {
                         alert('Failed to add product');
                     }

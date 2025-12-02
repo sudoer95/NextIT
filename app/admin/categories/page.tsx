@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 type Category = {
     id: number;
     name: string;
-    created_at: string;
 };
 
 export default function ManageCategories() {
@@ -29,7 +28,6 @@ export default function ManageCategories() {
                         <tr>
                             <th className="border border-gray-300 px-4 py-2">ID</th>
                             <th className="border border-gray-300 px-4 py-2">Name</th>
-                            <th className="border border-gray-300 px-4 py-2">Created at</th>
                             <th className="border border-gray-300 px-4 py-2">Edit</th>
                             <th className="border border-gray-300 px-4 py-2">Delete</th>
                         </tr>
@@ -39,7 +37,6 @@ export default function ManageCategories() {
                             <tr key={category.id} className="hover:bg-gray-50">
                                 <td className="border border-gray-300 px-4 py-2">{category.id}</td>
                                 <td className="border border-gray-300 px-4 py-2">{category.name}</td>
-                                <td className="border border-gray-300 px-4 py-2">{category.created_at}</td>
                                 <td className="border border-gray-300 px-4 py-2"><Link href={`categories/edit/${category.id}`}>Edit</Link></td>
                                 <td className="border border-gray-300 px-4 py-2"><button
                                     className="bg-red-500 text-white rounded"

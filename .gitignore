@@ -52,3 +52,6 @@ generated/prisma/
 
 #Prisma compiled test script
 TestPrisma.js
+
+pgdata
+docker-compose.yaml

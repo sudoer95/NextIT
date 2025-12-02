@@ -54,10 +54,11 @@ export async function seedProducts() {
 }
 export async function seed() {
     try {
-        testDb();
-        // await seedUsers();
+        // Seed sequentially by uncommenting lines one-by-one and running seed script.
+        // await testDb();
         // await seedCategories();
-        await seedProducts();
+        // await seedProducts();
+        // await seedUsers();
     }
     catch (e) {
         console.error(e);

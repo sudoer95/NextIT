@@ -1,7 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function AddCategory() {
+    const router = useRouter();
     const [name, setName] = useState("");
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -17,6 +19,7 @@ export default function AddCategory() {
             if (res.ok) {
                 alert('Category added successfully');
                 setName(""); // Clear the input field
+                router.push('/admin/categories/');
             } else {
                 alert('Failed to add category');
             }
