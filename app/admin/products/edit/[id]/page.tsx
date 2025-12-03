@@ -35,9 +35,23 @@ export default function EditProduct() {
             <div className="mb-4">
                 <p>{id}</p>
             </div>
-            <form className="flex flex-col space-y-4" onSubmit={(e) => {
+            <form className="flex flex-col space-y-4" onSubmit={async (e) => {
                 e.preventDefault();
+                let uploadedImageUrl = null;
                 const formData = new FormData(e.target as HTMLFormElement);
+                const imageFile = formData.get('image_file') as File || null;
+                if (imageFile) {
+                    const uploadForm = new FormData();
+                    uploadForm.append("image", imageFile);
+
+                    const uploadRes = await fetch("/api/imageUpload", {
+                        method: "POST",
+                        body: uploadForm,
+                    });
+
+                    const uploadJson = await uploadRes.json();
+                    uploadedImageUrl = uploadJson.image_url;
+                }
                 const data = {
                     id: parseInt(id as string),
                     name: formData.get('name'),
@@ -45,8 +59,9 @@ export default function EditProduct() {
                     price: parseFloat(formData.get('price') as string),
                     category_id: parseInt(formData.get('category_id') as string),
                     stock: parseInt(formData.get('stock') as string),
-                    image_url: formData.get('image_url'),
+                    image_url: uploadedImageUrl,
                 };
+
                 fetch(`/api/products/`, {
                     method: 'PUT',
                     headers: {
@@ -54,23 +69,23 @@ export default function EditProduct() {
                     },
                     body: JSON.stringify(data),
                 })
-                .then((res) => {
-                    if (res.ok) {
-                        alert('Product updated successfully');
-                        router.push('/admin/products/')
-                    } else {
-                        alert('Failed to update product');
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                    alert('An error occurred while updating the product');
-                });
+                    .then((res) => {
+                        if (res.ok) {
+                            alert('Product updated successfully');
+                            router.push('/admin/products/')
+                        } else {
+                            alert('Failed to update product');
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                        alert('An error occurred while updating the product');
+                    });
             }}>
                 <input type="text" defaultValue={product?.name} className="border p-2 rounded" name='name' />
                 <input type="text" defaultValue={product?.description} className="border p-2 rounded" name='description' />
                 <input type="number" defaultValue={product?.price !== undefined ? String(product.price) : undefined} className="border p-2 rounded" name='price' />
-                <input type="text" defaultValue={product?.image_url} className="border p-2 rounded" name='image_url' />
+                <input type="text" defaultValue={product?.image_url} className="border p-2 rounded" name='image_url_string' />
                 <input type="number" defaultValue={product?.stock !== undefined ? String(product?.stock) : undefined} className="border p-2 rounded" name='stock' />
                 <select name="category_id" className="border p-2 rounded" defaultValue={product?.category_id} required>
                     <option value="">Select a category</option>
@@ -80,6 +95,7 @@ export default function EditProduct() {
                         </option>
                     ))}
                 </select>
+                <input type="file" className="bg-blue-300 text-white p-2 rounded" name='image_file' />
                 <button type="submit" className="bg-blue-500 text-white p-2 rounded">Update Product</button>
             </form>
         </div>

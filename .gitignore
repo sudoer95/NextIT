@@ -55,3 +55,6 @@ TestPrisma.js
 
 pgdata
 docker-compose.yaml
+
+#public data
+/public/*

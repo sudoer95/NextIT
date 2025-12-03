@@ -13,16 +13,29 @@ export default function AddProduct(){
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
             <h1 className="text-4xl font-bold mb-4">Add Product</h1>
-            <form className="flex flex-col space-y-4" onSubmit={(e) => {
+            <form className="flex flex-col space-y-4" onSubmit={async (e) => {
                 e.preventDefault();
+                let imageUrl = null;
                 const formData = new FormData(e.target as HTMLFormElement);
+                const imageFile = formData.get('image_file') as File || null;
+                if (imageFile){
+                    const uploadForm = new FormData();
+                    uploadForm.append('image', imageFile);
+                    const uploadRes = await fetch('/api/imageUpload/',{
+                        method: 'POST',
+                        body: uploadForm,
+                    });
+                    const uploadedJson = await uploadRes.json();
+                    imageUrl = uploadedJson.image_url;
+                }
+
                 const data = {
                     name: formData.get('name'),
                     description: formData.get('description'),
                     price: parseFloat(formData.get('price') as string),
                     category_id: parseInt(formData.get('category_id') as string),
                     stock: parseInt(formData.get('stock') as string),
-                    image_url: formData.get('image_url'),
+                    image_url: imageUrl,
                 };
                 fetch('/api/products', {
                     method: 'POST',
@@ -57,6 +70,7 @@ export default function AddProduct(){
                         </option>
                     ))}
                 </select>
+                <input type="file" name="image_file" className="bg-blue-300 text-white p-2 rounded" />
                 <button type="submit" className="bg-blue-500 text-white p-2 rounded">Add Product</button>
             </form>
         </div>
