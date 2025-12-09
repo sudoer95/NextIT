@@ -58,3 +58,4 @@ docker-compose.yaml
 
 #public data
 /public/*
+!/public/dummy1x1.png
