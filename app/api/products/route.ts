@@ -1,5 +1,22 @@
-import { FetchProducts, FetchProductById ,FetchFilteredProducts, CreateProduct, UpdateProduct, DeleteProduct } from "@/lib/queries/products";
+import { FetchProducts, FetchProductById, FetchFilteredProducts, CreateProduct, UpdateProduct, DeleteProduct } from "@/lib/queries/products";
 import { NextResponse } from "next/server";
+
+/* How to use: GET
+    if you want to filter products(recommended to use mostly)
+    '/api/products/?Filtered=true&category=$category_id&search=$search_params&limit=$how_many_products_to_give&page=$pagination_page'
+*/
+
+// export async function GET_BY_ID(request: Request){
+//     try{
+//         console.log("Hey, i am working.");
+//         const { searchParams } = new URL(request.url);
+//         const id = Number(searchParams.get("id"));
+//         const product = await FetchProductById(id);
+//         return NextResponse.json(product);
+//     }catch(e){
+//         return NextResponse.json({error: "Error fetching products", e}, {status: 500})
+//     }
+// }
 
 export async function GET(request: Request) {
     try {
@@ -14,15 +31,25 @@ export async function GET(request: Request) {
             const products = await FetchFilteredProducts({ category_id, search, limit, offset });
             return NextResponse.json(products);
         }
-        else if (searchParams.get("id")){
-            const id = Number(searchParams.get("id"));
-            const product = await FetchProductById(id);
-            if (!product) {
-                return NextResponse.json({ error: "Product not found" }, { status: 404 });
+        else if (searchParams.get("id")) {
+            try {
+                console.log("HEYY");
+                const idParam = searchParams.get("id");
+                const id = Number(idParam);
+                if (!idParam || isNaN(id)) {
+                    return NextResponse.json({ error: "Invalid product id" }, { status: 400 });
+                }
+                const product = await FetchProductById(id);
+                if (!product) {
+                    return NextResponse.json({ error: "Product not found" }, { status: 404 });
+                }
+                return NextResponse.json(product);
+            }catch(e){
+                console.error(e);
             }
-            return NextResponse.json(product);
+            
         }
-        else{
+        else {
             const products = await FetchProducts();
             return NextResponse.json(products);
         }

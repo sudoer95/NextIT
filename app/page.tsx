@@ -1,14 +1,30 @@
-import {ProductCart} from "../components/ProductCard";
-import { products } from "@/lib/dummyData";
-import { categories } from "@/lib/dummyData";
+"use client"
+import {ProductCard} from "../components/ProductCard";
 import { Carousel } from "../components/Carousel";
 import Link from "next/link";
 import { RouteTransition } from "@/components/RouteTransition";
+import { useState, useEffect } from "react";
+import { Product, Category } from "@/lib/types";
 
 export default function Home() {
+  const [popularProducts, setPopularProducts] = useState(Array<Product>);
+  const [popularCategories, setPopularCategories] = useState(Array<Category>);
+
+  useEffect(()=>{
+    fetch('/api/products/?Filtered=true&limit=10')
+    .then(res => res.json())
+    .then((data)=>{ setPopularProducts(Array.isArray(data) ? data : []) })
+  },[]);
+
+  useEffect(()=>{
+    fetch('/api/categories')
+    .then(res => res.json())
+    .then((data)=>{ setPopularCategories(Array.isArray(data) ? data : []) })
+  },[])
+  // const popularProducts = products.slice(0, 3);
+  // const popularCategories = categories.slice(0, 5);
   
-  const popularProducts = products.slice(0, 3);
-  const popularCategories = categories.slice(0, 5);
+
   return (
     <main>
       <RouteTransition>
@@ -32,7 +48,7 @@ export default function Home() {
         <h2 className="text-xl text-center font-semibold mb-4">You might also like</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           {popularProducts.map(product => (
-            <ProductCart key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </section>
