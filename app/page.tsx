@@ -11,7 +11,7 @@ export default function Home() {
   const [popularCategories, setPopularCategories] = useState(Array<Category>);
 
   useEffect(()=>{
-    fetch('/api/products/?Filtered=true&limit=10')
+    fetch('/api/products/?Filtered=true&limit=12')
     .then(res => res.json())
     .then((data)=>{ setPopularProducts(Array.isArray(data) ? data : []) })
   },[]);
@@ -21,8 +21,6 @@ export default function Home() {
     .then(res => res.json())
     .then((data)=>{ setPopularCategories(Array.isArray(data) ? data : []) })
   },[])
-  // const popularProducts = products.slice(0, 3);
-  // const popularCategories = categories.slice(0, 5);
   
 
   return (
